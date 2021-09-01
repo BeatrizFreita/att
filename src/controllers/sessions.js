@@ -1,6 +1,7 @@
 const User = require("../models/User");
 const jwt = require("jsonwebtoken");
 const auth = require("../config/auth");
+const bcrypt = require("bcryptjs");
 
 module.exports = {
 	async store(req, res) {
@@ -10,7 +11,7 @@ module.exports = {
 				email: email
 			}
 		});
-		if (!user || user.password !== password) {
+		if (!user || !bcrypt.compareSync(password,user.password)) {
 			return res.status(403)
 				.send({ error: "Usuário e/ou senha inválidos" });
 		}

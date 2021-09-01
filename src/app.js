@@ -4,7 +4,7 @@ const routes = require("./routes");
 
 const app = express();
 
-//Dizemos para o express que ele pode aceitar json
+//dizemos para o express que ele pode aceitar json
 app.use(express.json());
 
 app.use(routes);
