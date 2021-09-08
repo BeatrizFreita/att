@@ -25,7 +25,7 @@ module.exports = {
         user = await User.create({
             name: name,
             email: email,
-            password: password
+            password: passwordHashed
         });
 
         //gerar um token 
